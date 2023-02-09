@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/styleCadena.css">
+        <link rel="stylesheet" href="css/AFD.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <title>Proyecto-Autómatas y Lenguajes Formales</title>
+    </head>
+    <body>
+        <ul class="menu-bar">
+            <li><a href="index.html" class="Btn1">Carátula</a></li>
+            <li><a href="IngresarCadena.html" class="Btn2">Ingresar Cadena</a></li>
+        </ul>
+
+
+        <div class="CONTENEDOR_PRINCIPAL">
+                <div class="CADENA">
+                    <div class="contenedor2">
+                        <h2>ACÁ PODRÁS VALIDAR TU CADENA</h2>
+                        <div class="contenedor3">
+                            <label>
+                                <h3>
+                                    EXPRESIÓN REGULAR: 
+                                    <span id="Exp_Regul">abc(ac+b)*</span>
+                                </h3>
+                            </label>
+                        </div>
+                        <form id="TODO">
+                            <label class="entrada">
+                                <div class="input_cadena">
+                                    <input type="text" id="CadenaW" title="INGRESAR CADENA" placeholder="INGRESA LA CADENA" /></input>
+                                </div>
+
+
+                                <button type="button" id="BotonValidar" title="VALIDAR CADENA" onclick="VALIDAR();">VALIDAR</button>
+                            </label> 
+                        </form>
+                    </div>
+        
+                    <br>
+        
+                    <div class="datosAutomata">
+                        <div class="col-10">
+                            <table class="table table-striped table-hover">
+                                <tr class="Encabezado" align="center">
+                                    <td>Q</td>
+                                    <td>Σ</td>
+                                    <td>qo</td>
+                                    <td>F</td>
+                                </tr>
+                                <tr class="Cuerpo" align="center">
+                                    <td>{A,B,C,D,E,F,G}</td>
+                                    <td>{a,b,c}</td>
+                                    <td>A</td>
+                                    <td>{D,F,G}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <br>
+                    
+                    <div class="DivResultado">
+                        <div  class=" col-10" id="list">
+        
+                        </div>
+                    </div>
+            </div>
+
+            <div class="GRAFICO">
+                <div class="contenedorEstados">
+                    <div class="center">
+                        <div class="triangulo"></div>
+                        <input type="checkbox" class="checkbox" id="EstadoA" disabled>
+                        <input type="checkbox" class="checkbox" id="EstadoB" disabled>
+                        <input type="checkbox" class="checkbox abajoflecha" id="EstadoC" disabled>
+                        <span class="flecha fl1"></span>
+                        <span class="flecha fl2"></span>
+                        <span class="flecha fl3"></span>
+                
+                        <div class="abajo1">
+                            <input type="checkbox" class="checkbox" id="EstadoD" disabled>
+                            <span class="flecha fl4"></span>
+                            <span class="flecha fl5"></span>
+                        </div>
+                
+                        <div class="abajo2">
+                            <input type="checkbox" class="checkbox c1" id="EstadoF" disabled>
+                            <span id="DiseñoCadenaB">b</span>
+                            <span id="espacioContador"></span>
+                            <input type="checkbox" class="checkbox c2" id="EstadoE" disabled>
+                            <span class="flecha fl6"></span>
+                            <span class="flecha fl7"></span>
+                            <span class="flecha fl8"></span>
+                        </div>
+                
+                        <div class="abajo3">
+                            <input type="checkbox" class="checkbox" id="EstadoG" disabled>
+                            <span class="flecha fl9"></span>
+                            <span class="flecha fl10"></span>
+                        </div>
+                    </div>
+                
+                    <div class="linea" id="LINEA">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="entradas" id="entradas">
+                        <span>a</span>
+                        <span>b</span>
+                        <span>c</span>
+                        <span>a</span>
+                        <span>a</span>
+                        <span>b</span>
+                        <span>b</span>
+                        <span>a</span>
+                        <span>c</span>
+                    </div>
+
+                    <div class="estados" id="estados">
+                        <span>A</span>
+                        <span>B</span>
+                        <span>C</span>
+                        <span>D</span>
+                        <span>E</span>
+                        <span>F</span>
+                        <span>G</span>
+                    </div>
+
+                    <div class="circulo"></div>
+                    <div class="circulo2"></div>
+                    <div class="circulo3"></div>
+
+                    <div class="curva"></div>
+                    <div class="curva2"></div>
+
+                    <a href="#Tabla" id="mostrar" onclick="MostrarTablaT();">VER TABLA DE TRANSICIONES</a>
+
+                    <div class="contenedorTablaTransiciones table-responsive">
+                        <div class="col-11">
+                            <table id="Tabla" class="table table-striped table-hover caption-top">
+                                <div class="triangulo2"></div>
+                                <caption class="titulotabla">Tabla de Transiciones</caption>
+                                <tr align="center">
+                                    <td>Q</td>
+                                    <td>a</td>
+                                    <td>b</td>
+                                    <td>c</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>A</td>
+                                    <td>B</td>
+                                    <td>Ø</td>
+                                    <td>Ø</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>B</td>
+                                    <td>Ø</td>
+                                    <td>C</td>
+                                    <td>Ø</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>C</td>
+                                    <td>Ø</td>
+                                    <td>Ø</td>
+                                    <td>D</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>D</td>
+                                    <td>E</td>
+                                    <td>F</td>
+                                    <td>Ø</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>E</td>
+                                    <td>Ø</td>
+                                    <td>Ø</td>
+                                    <td>G</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>F</td>
+                                    <td>E</td>
+                                    <td>F</td>
+                                    <td>Ø</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>G</td>
+                                    <td>E</td>
+                                    <td>F</td>
+                                    <td>Ø</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <a href="#header" id="ocultar" onclick="OcultarTabla();">OCULTAR TABLA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <footer>
+                <p>&#169 2021-INGENIERIA EN SISTEMAS-GRUPO # 1</p>
+            </footer>
+        <script src="script/funcion.js"></script>
+    </body>
+</html>
